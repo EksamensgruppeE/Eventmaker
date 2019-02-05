@@ -2,13 +2,177 @@
     x:Class="Eventmaker.View.CreateEventPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Eventmaker.View"
+    xmlns:ViewModel="using:Eventmaker.ViewModel"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Eventmaker.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
-    <Grid>
+    <!--<Page.Background>
+        <ImageBrush ImageSource="ms-appx:///Assets/Bæver.PNG" Stretch="Fill" />
+    </Page.Background>-->
+
+
+    <Page.DataContext>
+        <ViewModel:EventViewModel />
+    </Page.DataContext>
+
+    <Grid Background="White">
+
+
+        <TextBlock
+            Grid.Column="1"
+            Margin="0,0,10,0"
+            HorizontalAlignment="Right"
+            FontSize="50"
+            FontWeight="Bold"
+            Foreground="DarkGoldenrod"
+            Text="Beaver team 5" />
+        <!--  Grid 2  -->
+        <Grid
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="0,1,4,-15"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel MinHeight="40">
+                <TextBlock
+                    MinHeight="41"
+                    Margin="40,10,0,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Text="Name"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    MinHeight="41"
+                    Margin="40,10,0,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Text="Place"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    MinHeight="41"
+                    Margin="40,10,0,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Text="Description"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    MinHeight="41"
+                    Margin="40,10,0,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Text="ID"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    MinHeight="41"
+                    Margin="40,10,0,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Text="Date"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    MinHeight="41"
+                    Margin="40,10,0,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Text="Time"
+                    TextWrapping="Wrap" />
+
+
+
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Vertical">
+                <TextBox
+                    x:Name="Name"
+                    Width="auto"
+                    Height="auto"
+                    MinHeight="40"
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    TextWrapping="Wrap" />
+                <TextBox
+                    x:Name="Place"
+                    Width="auto"
+                    Height="auto"
+                    MinHeight="40"
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Text="{Binding Place, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    TextWrapping="Wrap" />
+                <TextBox
+                    x:Name="Description"
+                    Width="auto"
+                    Height="auto"
+                    MinHeight="40"
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    TextWrapping="Wrap" />
+                <TextBox
+                    x:Name="ID"
+                    Width="auto"
+                    Height="auto"
+                    MinHeight="40"
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Text="{Binding EventCatalogSingleton.Events[0].Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    TextWrapping="Wrap" />
+                <DatePicker
+                    MinHeight="40"
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Date="{Binding Date}" />
+                <TimePicker
+                    MinHeight="40"
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Time="{Binding Time}" />
+
+
+            </StackPanel>
+
+        </Grid>
+        <AppBarButton
+            Width="76"
+            Height="85"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="AppBarButton_Click"
+            FocusVisualPrimaryBrush="Black"
+            Icon="Back"
+            Label="AppBarButton">
+            <AppBarButton
+                Width="100"
+                Height="100"
+                Icon="Accept"
+                Label="AppBarButton" />
+        </AppBarButton>
+
+        <!--
+            Create Event
+        -->
+
+        <!--
+            Event View
+        -->
+
 
     </Grid>
 </Page>
