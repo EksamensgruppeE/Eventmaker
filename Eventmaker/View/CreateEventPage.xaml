@@ -7,16 +7,17 @@
     xmlns:local="using:Eventmaker.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <Page.Background>
+
+    <!--<Page.Background>
         <ImageBrush ImageSource="ms-appx:///Assets/Bæver.PNG" Stretch="Fill" />
-    </Page.Background>
+    </Page.Background>-->
 
 
     <Page.DataContext>
         <ViewModel:EventViewModel />
     </Page.DataContext>
 
-    <Grid>
+    <Grid Background="White">
 
 
         <TextBlock
@@ -30,6 +31,7 @@
         <!--  Grid 2  -->
         <Grid
             Grid.Row="1"
+            Grid.Column="0"
             Grid.ColumnSpan="2"
             Margin="0,1,4,-15"
             HorizontalAlignment="Center"
