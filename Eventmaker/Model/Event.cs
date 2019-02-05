@@ -29,5 +29,10 @@ namespace Eventmaker.Model
         {
             return $"{nameof(DateTime)}: {DateTime}, {nameof(Id)}: {Id}, {nameof(Description)}: {Description}, {nameof(Name)}: {Name}, {nameof(Place)}: {Place}";
         }
+
+
+
+      
+
     }
 }
