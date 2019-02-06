@@ -14,7 +14,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Eventmaker.Model;
 using Eventmaker.View;
+using NoteMVVM;
 
 namespace Eventmaker
 {
@@ -93,8 +95,11 @@ namespace Eventmaker
         /// <param name="e">Details about the suspend request.</param>
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
+
+            PersistencyService.SaveEventsAsJsonAsync(EventCatalogSingleton.Instance.Events);
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
+           
             deferral.Complete();
         }
     }
