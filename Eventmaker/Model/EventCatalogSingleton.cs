@@ -45,6 +45,7 @@ namespace Eventmaker.Model
 
         }
 
+        //denne metode tager det event vi har gemt i SelectedEvent og fjerner det fra listen. 
         public void RemoveEvent()
         {
             Events.Remove(EventViewModel.SelectedEvent);

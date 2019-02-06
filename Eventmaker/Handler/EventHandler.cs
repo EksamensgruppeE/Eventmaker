@@ -30,9 +30,12 @@ namespace Eventmaker.Handler
 
         public void DeleteEvent()
         {
+            //denne metode kalder den metode der fjerner det event vi har selected i listview.
             EventCatalogSingleton.Instance.RemoveEvent();
         }
 
+        //denne metode tager det event den har fået fra EventViewModel.SelectedEventCommand
+        //og sætter EventViewModels property SelectedEvent til at være lig med det event vi har modtaget. 
         public void SetSelectedEvent(Event selectedEvent)
         {
             EventViewModel.SelectedEvent = selectedEvent;

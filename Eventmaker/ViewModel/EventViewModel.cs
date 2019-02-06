@@ -18,14 +18,16 @@ namespace Eventmaker.ViewModel
 
         public EventCatalogSingleton EventCatalogSingleton { get; set; }
 
+        //her gemmes det Event vi har valgt i ListViewet
         public static Event SelectedEvent { get; set; }
 
         public ICommand SelectedEventCommand
         {
             get
-            {
-                return _selectedEventCommand ?? (_selectedEventCommand =
-                           new RelayArgCommand<Event>(ev => EventHandler.SetSelectedEvent(ev))); }
+            {    //vi sætter _selectedEventCommand til at være lig en ny RelayCommand der kan tage argumenter af typen Event
+                // dernæst kalder den metoden SetSelectedEvent i EventHandler. 
+                return _selectedEventCommand ?? (_selectedEventCommand = new RelayArgCommand<Event>(ev => EventHandler.SetSelectedEvent(ev))); }
+
             set { _selectedEventCommand = value; }
         }
         
@@ -33,6 +35,7 @@ namespace Eventmaker.ViewModel
 
         public ICommand DeleteEventCommand
         {
+            //denne metode kalder DeleteEvent metoden i EventHandler via RelayCommand.
             get { return _deleteEventCommand ?? (_deleteEventCommand = new RelayCommand(EventHandler.DeleteEvent)); }
 
             set { _deleteEventCommand = value; }
