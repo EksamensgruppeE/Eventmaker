@@ -15,7 +15,7 @@
         <ViewModel:EventViewModel />
     </Page.DataContext>
 
-    <Grid Background="AntiqueWhite" Width="1505">
+    <Grid Background="AntiqueWhite" >
 
 
         <TextBlock
