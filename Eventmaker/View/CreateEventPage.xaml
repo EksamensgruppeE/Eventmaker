@@ -8,16 +8,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <!--<Page.Background>
-        <ImageBrush ImageSource="ms-appx:///Assets/Bæver.PNG" Stretch="Fill" />
-    </Page.Background>-->
+  
 
 
     <Page.DataContext>
         <ViewModel:EventViewModel />
     </Page.DataContext>
 
-    <Grid Background="White">
+    <Grid Background="AntiqueWhite" Width="1505">
 
 
         <TextBlock
@@ -91,7 +89,7 @@
 
             </StackPanel>
 
-            <StackPanel Grid.Column="1" Orientation="Vertical">
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,0,0,0">
                 <TextBox
                     x:Name="Name"
                     Width="auto"
@@ -150,20 +148,20 @@
 
         </Grid>
         <AppBarButton
-            Width="76"
-            Height="85"
+            Width="Auto"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="AppBarButton_Click"
             FocusVisualPrimaryBrush="Black"
             Icon="Back"
-            Label="AppBarButton">
+            Label="AppBarButton" Margin="855,691,0,0">
             <AppBarButton
                 Width="100"
                 Height="100"
                 Icon="Accept"
                 Label="AppBarButton" />
         </AppBarButton>
+        <AppBarButton HorizontalAlignment="Left" Label="AppBarButton" Margin="747,691,0,0" VerticalAlignment="Top" Width="Auto" Command="{Binding CreateEventCommand}" Icon="Add"/>
 
         <!--
             Create Event

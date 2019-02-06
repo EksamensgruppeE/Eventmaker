@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Eventmaker.ViewModel;
+using NoteMVVM;
 
 namespace Eventmaker.Model
 {
@@ -24,8 +26,9 @@ namespace Eventmaker.Model
         {
             Events = new ObservableCollection<Event>();
 
+            LoadEventsAsync();
             // For testing
-            TestEvents();
+            
         }
 
         private void TestEvents()
@@ -38,7 +41,31 @@ namespace Eventmaker.Model
         public void AddEvent(Event newEvent)
         {
             Events.Add(newEvent);
+           
+
         }
 
+        public void RemoveEvent()
+        {
+            Events.Remove(EventViewModel.SelectedEvent);
+        }
+
+        public async void LoadEventsAsync()
+        {
+            var loadedEvents = await PersistencyService.LoadEventsFromJsonAsync();
+
+            if (loadedEvents.Count != 0)
+            {
+                foreach (var events in loadedEvents)
+                {
+                    Events.Add(events);
+                }
+            }
+            else
+            {
+                TestEvents();
+            }
+
+        }
     }
 }
