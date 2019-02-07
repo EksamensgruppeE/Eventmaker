@@ -6,24 +6,29 @@ using System.Threading.Tasks;
 
 namespace Eventmaker.Model
 {
-    class Event 
+    class Event
     {
+        private static int numberOfEvents = 0;
+
         // Properties
         public DateTime DateTime { get; set; }
         public Boolean IsExpired { get; set; }
+
         public int Id { get; set; }
+
         public string Description { get; set; }
         public string Name { get; set; }
         public string Place { get; set; }
 
         // Constructor
-        public Event(DateTime dateTime, int id, string description, string name, string place)
+        public Event(DateTime dateTime, string description, string name, string place)
         {
             DateTime = dateTime;
-            Id = id;
             Description = description;
+            Id = 1 + numberOfEvents;
             Name = name;
             Place = place;
+            numberOfEvents++;
 
         }
 
