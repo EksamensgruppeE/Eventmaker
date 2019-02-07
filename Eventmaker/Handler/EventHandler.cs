@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Eventmaker.Model;
 using Eventmaker.ViewModel;
+using System.Threading;
+
+
 
 namespace Eventmaker.Handler
 {
@@ -41,18 +44,21 @@ namespace Eventmaker.Handler
             EventViewModel.SelectedEvent = selectedEvent;
         }
 
-        public void ExpireCheck()
+        public  void ExpireCheck()
         {
-
-            for (int i = 0; i < EventViewModel.EventCatalogSingleton.Events.Count; i++)
-            {
-               if (EventViewModel.EventCatalogSingleton.Events[i].DateTime < DateTime.Now)
+            
+                for (int i = 0; i < EventViewModel.EventCatalogSingleton.Events.Count; i++)
                 {
-                    EventViewModel.EventCatalogSingleton.Events[i].IsExpired = true;
+                    if (EventViewModel.EventCatalogSingleton.Events[i].DateTime < DateTime.Now)
+                    {
+                        EventViewModel.EventCatalogSingleton.Events[i].IsExpired = true;
+                    }
+
+
                 }
+
                 
 
-            }
             
         }
 

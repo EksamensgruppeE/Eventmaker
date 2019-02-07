@@ -134,13 +134,13 @@
                     Margin="0,10,0,0"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Top"
-                    Date="{Binding Date}" />
+                    Date="{Binding Date, Mode=TwoWay}" />
                 <TimePicker
                     MinHeight="40"
                     Margin="0,10,0,0"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Top"
-                    Time="{Binding Time}" />
+                    Time="{Binding Time, Mode=TwoWay}" />
 
 
             </StackPanel>
