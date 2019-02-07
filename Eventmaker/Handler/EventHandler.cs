@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Eventmaker.Model;
 using Eventmaker.ViewModel;
+using System.Threading;
+
+
 
 namespace Eventmaker.Handler
 {
@@ -22,11 +25,13 @@ namespace Eventmaker.Handler
         {
             // denne sindssyge oprettelse af et event, benytter sig af alle de properties fra ViewModellen 
             // + den konverterede DateTime fra DateTimeConverteren
+
             if (EventViewModel.Description !=null && EventViewModel.Name != null && EventViewModel.Place != null)
             {
                 Event newEvent = new Event(
                     Converter.DateTimeConverter.DateTimeOffsetAndTimeSetToDateTime(EventViewModel.Date,
                         EventViewModel.Time), EventViewModel.Description, EventViewModel.Name, EventViewModel.Place);
+
 
                 Model.EventCatalogSingleton.Instance.AddEvent(newEvent);
             }
@@ -56,18 +61,21 @@ namespace Eventmaker.Handler
             EventViewModel.SelectedEvent = selectedEvent;
         }
 
-        public void ExpireCheck()
+        public  void ExpireCheck()
         {
-
-            for (int i = 0; i < EventViewModel.EventCatalogSingleton.Events.Count; i++)
-            {
-               if (EventViewModel.EventCatalogSingleton.Events[i].DateTime < DateTime.Now)
+            
+                for (int i = 0; i < EventViewModel.EventCatalogSingleton.Events.Count; i++)
                 {
-                    EventViewModel.EventCatalogSingleton.Events[i].IsExpired = true;
+                    if (EventViewModel.EventCatalogSingleton.Events[i].DateTime < DateTime.Now)
+                    {
+                        EventViewModel.EventCatalogSingleton.Events[i].IsExpired = true;
+                    }
+
+
                 }
+
                 
 
-            }
             
         }
 
