@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 using Eventmaker.Model;
 using Eventmaker.ViewModel;
 using System.Threading;
@@ -25,10 +26,25 @@ namespace Eventmaker.Handler
             // denne sindssyge oprettelse af et event, benytter sig af alle de properties fra ViewModellen 
             // + den konverterede DateTime fra DateTimeConverteren
 
-            Event newEvent = new Event(Converter.DateTimeConverter.DateTimeOffsetAndTimeSetToDateTime(EventViewModel.Date, EventViewModel.Time),
-            EventViewModel.Id, EventViewModel.Description, EventViewModel.Name, EventViewModel.Place);
+            if (EventViewModel.Description !=null && EventViewModel.Name != null && EventViewModel.Place != null)
+            {
+                Event newEvent = new Event(
+                    Converter.DateTimeConverter.DateTimeOffsetAndTimeSetToDateTime(EventViewModel.Date,
+                        EventViewModel.Time), EventViewModel.Description, EventViewModel.Name, EventViewModel.Place);
 
-            Model.EventCatalogSingleton.Instance.AddEvent(newEvent);
+
+                Model.EventCatalogSingleton.Instance.AddEvent(newEvent);
+            }
+
+            if (EventViewModel.Name == null)
+            {
+                MessageDialogHelper.Show("Name of event is empty", "Invalid event name");
+            }
+
+            if (EventViewModel.Place == null)
+            {
+                MessageDialogHelper.Show("Location for event is empty", "Invalid location");
+            }
 
         }
 
@@ -61,6 +77,15 @@ namespace Eventmaker.Handler
                 
 
             
+        }
+
+        private class MessageDialogHelper
+        {
+            public static async void Show(string content, string title)
+            {
+                MessageDialog messageDialog = new MessageDialog(content, title);
+                await messageDialog.ShowAsync();
+            }
         }
 
     }

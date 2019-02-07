@@ -91,13 +91,6 @@
                     Margin="40,10,0,0"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Top"
-                    Text="ID"
-                    TextWrapping="Wrap" />
-                <TextBlock
-                    MinHeight="41"
-                    Margin="40,10,0,0"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Top"
                     Text="Date"
                     TextWrapping="Wrap" />
                 <TextBlock
@@ -143,16 +136,6 @@
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Top"
                     Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    TextWrapping="Wrap" />
-                <TextBox
-                    x:Name="ID"
-                    Width="auto"
-                    Height="auto"
-                    MinHeight="40"
-                    Margin="0,10,0,0"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Top"
-                    Text="{Binding EventCatalogSingleton.Events[0].Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     TextWrapping="Wrap" />
                 <DatePicker
                     MinHeight="40"
