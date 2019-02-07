@@ -10,6 +10,7 @@ namespace Eventmaker.Model
     {
         // Properties
         public DateTime DateTime { get; set; }
+        public Boolean IsExpired { get; set; }
         public int Id { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
@@ -23,6 +24,7 @@ namespace Eventmaker.Model
             Description = description;
             Name = name;
             Place = place;
+
         }
 
         public override string ToString()
@@ -31,6 +33,7 @@ namespace Eventmaker.Model
         }
 
 
+        
 
       
 

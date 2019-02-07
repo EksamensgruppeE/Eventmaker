@@ -40,6 +40,8 @@ namespace Eventmaker.Handler
         {
             EventViewModel.SelectedEvent = selectedEvent;
         }
+
+        
        
     }
 }
