@@ -31,7 +31,7 @@ namespace Eventmaker.ViewModel
             set { _selectedEventCommand = value; }
         }
 
-        
+        public ICommand CheckExpireCommand { get; set; }
         
         public ICommand CreateEventCommand { get; set; }
 
@@ -70,7 +70,8 @@ namespace Eventmaker.ViewModel
 
             CreateEventCommand = new RelayCommand(EventHandler.CreateEvent);
             
-            EventHandler.ExpireCheck();
+            CheckExpireCommand = new RelayCommand(EventHandler.ExpireCheck);
+            
         }
 
         

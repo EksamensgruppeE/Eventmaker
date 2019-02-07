@@ -7,7 +7,7 @@ using Windows.UI.Popups;
 using Eventmaker.Model;
 using Eventmaker.ViewModel;
 using System.Threading;
-
+using NoteMVVM;
 
 
 namespace Eventmaker.Handler
@@ -34,6 +34,7 @@ namespace Eventmaker.Handler
 
 
                 Model.EventCatalogSingleton.Instance.AddEvent(newEvent);
+                PersistencyService.SaveEventsAsJsonAsync(EventCatalogSingleton.Instance.Events);
             }
 
             if (EventViewModel.Name == null)

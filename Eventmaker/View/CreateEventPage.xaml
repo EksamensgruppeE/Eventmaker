@@ -12,30 +12,20 @@
             <CommandBar.Content>
                 <Grid/>
             </CommandBar.Content>
-            <AppBarButton Icon="Accept" Label="AppBarButton"/>
-            <AppBarButton Icon="Cancel" Label="AppBarButton"/>
             <AppBarButton
-            Width="Auto"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Click="AppBarButton_Click"
-            FocusVisualPrimaryBrush="Black"
-            Icon="Back"
-            Label="AppBarButton">
-                <AppBarButton
-                Width="100"
-                Height="100"
-                Icon="Accept"
-                Label="AppBarButton"
-                Command="{Binding ExpireCheckCommand}"/>
-            </AppBarButton>
-            <AppBarButton HorizontalAlignment="Left" Label="AppBarButton" VerticalAlignment="Top" Width="Auto" Command="{Binding CreateEventCommand}" Icon="Add"/>
+               
+                Click="AppBarButton_Click"
+                FocusVisualPrimaryBrush="Black"
+                Icon="Back"
+                Label="To Event List"
+                Command="{Binding CheckExpireCommand}"/>
+                
+           
+            <AppBarButton  Label="Create Event"  Command="{Binding CreateEventCommand}" Icon="Add"/>
         </CommandBar>
     </Page.BottomAppBar>
-
-
-
-
+  
+            
     <Page.DataContext>
         <ViewModel:EventViewModel />
     </Page.DataContext>
@@ -148,7 +138,8 @@
                     Margin="0,10,0,0"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Top"
-                    Time="{Binding Time, Mode=TwoWay}" />
+                    
+                    Time="{Binding Time, Mode=TwoWay}" ClockIdentifier="24HourClock" />
 
 
             </StackPanel>

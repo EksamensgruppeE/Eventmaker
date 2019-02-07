@@ -37,6 +37,9 @@ namespace Eventmaker.View
             Frame.Navigate(typeof(CreateEventPage));
         }
 
-        
+        private void Listview_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
