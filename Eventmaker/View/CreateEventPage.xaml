@@ -7,8 +7,33 @@
     xmlns:local="using:Eventmaker.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Icon="Accept" Label="AppBarButton"/>
+            <AppBarButton Icon="Cancel" Label="AppBarButton"/>
+            <AppBarButton
+            Width="Auto"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="AppBarButton_Click"
+            FocusVisualPrimaryBrush="Black"
+            Icon="Back"
+            Label="AppBarButton">
+                <AppBarButton
+                Width="100"
+                Height="100"
+                Icon="Accept"
+                Label="AppBarButton"
+                Command="{Binding ExpireCheckCommand}"/>
+            </AppBarButton>
+            <AppBarButton HorizontalAlignment="Left" Label="AppBarButton" VerticalAlignment="Top" Width="Auto" Command="{Binding CreateEventCommand}" Icon="Add"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 
-  
+
 
 
     <Page.DataContext>
@@ -146,22 +171,6 @@
             </StackPanel>
 
         </Grid>
-        <AppBarButton
-            Width="Auto"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Click="AppBarButton_Click"
-            FocusVisualPrimaryBrush="Black"
-            Icon="Back"
-            Label="AppBarButton" Margin="855,691,0,0">
-            <AppBarButton
-                Width="100"
-                Height="100"
-                Icon="Accept"
-                Label="AppBarButton"
-                Command="{Binding ExpireCheckCommand}"/>
-        </AppBarButton>
-        <AppBarButton HorizontalAlignment="Left" Label="AppBarButton" Margin="747,691,0,0" VerticalAlignment="Top" Width="Auto" Command="{Binding CreateEventCommand}" Icon="Add"/>
 
         <!--
             Create Event

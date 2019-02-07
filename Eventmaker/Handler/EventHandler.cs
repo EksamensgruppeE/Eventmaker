@@ -24,6 +24,7 @@ namespace Eventmaker.Handler
         {
             // denne sindssyge oprettelse af et event, benytter sig af alle de properties fra ViewModellen 
             // + den konverterede DateTime fra DateTimeConverteren
+
             Event newEvent = new Event(Converter.DateTimeConverter.DateTimeOffsetAndTimeSetToDateTime(EventViewModel.Date, EventViewModel.Time),
             EventViewModel.Id, EventViewModel.Description, EventViewModel.Name, EventViewModel.Place);
 
