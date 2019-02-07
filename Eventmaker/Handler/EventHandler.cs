@@ -41,7 +41,20 @@ namespace Eventmaker.Handler
             EventViewModel.SelectedEvent = selectedEvent;
         }
 
-        
-       
+        public void ExpireCheck()
+        {
+
+            for (int i = 0; i < EventViewModel.EventCatalogSingleton.Events.Count; i++)
+            {
+               if (EventViewModel.EventCatalogSingleton.Events[i].DateTime < DateTime.Now)
+                {
+                    EventViewModel.EventCatalogSingleton.Events[i].IsExpired = true;
+                }
+                
+
+            }
+            
+        }
+
     }
 }

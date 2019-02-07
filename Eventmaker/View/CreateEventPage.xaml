@@ -158,7 +158,8 @@
                 Width="100"
                 Height="100"
                 Icon="Accept"
-                Label="AppBarButton" />
+                Label="AppBarButton"
+                Command="{Binding ExpireCheckCommand}"/>
         </AppBarButton>
         <AppBarButton HorizontalAlignment="Left" Label="AppBarButton" Margin="747,691,0,0" VerticalAlignment="Top" Width="Auto" Command="{Binding CreateEventCommand}" Icon="Add"/>
 

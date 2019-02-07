@@ -18,6 +18,7 @@
             <AppBarButton
             Click="AppBarButton_Click"
             Icon="Forward" />
+                
         </CommandBar>
     </Page.BottomAppBar>
 
@@ -38,6 +39,11 @@
 
                         <TextBlock Text="{Binding Description}" />
                         <TextBlock Text="{Binding Place}" />
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Expired: " />
+                        <TextBlock Text="{Binding IsExpired}" Margin="5,0,0,0" />
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

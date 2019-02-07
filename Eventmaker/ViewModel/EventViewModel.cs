@@ -30,6 +30,8 @@ namespace Eventmaker.ViewModel
 
             set { _selectedEventCommand = value; }
         }
+
+        
         
         public ICommand CreateEventCommand { get; set; }
 
@@ -67,9 +69,11 @@ namespace Eventmaker.ViewModel
             EventHandler = new Handler.EventHandler(this);
 
             CreateEventCommand = new RelayCommand(EventHandler.CreateEvent);
+            
+            EventHandler.ExpireCheck();
         }
 
-
+        
     }
 
     
