@@ -14,10 +14,10 @@
             <CommandBar.Content>
                 <Grid/>
             </CommandBar.Content>
-            <AppBarButton Icon="Cancel" Label="Delete Event" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding DeleteEventCommand}"/>
+            <AppBarButton Icon="Delete" Label="Delete Event" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding DeleteEventCommand}"/>
             <AppBarButton
             Click="AppBarButton_Click"
-            Icon="Forward" Label="To Create Event" />
+            Icon="Add" Label="To Create Event" />
                 
         </CommandBar>
     </Page.BottomAppBar>

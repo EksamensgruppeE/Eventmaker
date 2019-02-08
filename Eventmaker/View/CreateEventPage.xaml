@@ -16,7 +16,7 @@
                
                 Click="AppBarButton_Click"
                 FocusVisualPrimaryBrush="Black"
-                Icon="Back"
+                Icon="Cancel"
                 Label="To Event List"
                 Command="{Binding CheckExpireCommand}"/>
                 
