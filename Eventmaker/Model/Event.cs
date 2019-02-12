@@ -12,13 +12,37 @@ namespace Eventmaker.Model
 
         // Properties
         public DateTime DateTime { get; set; }
-        public Boolean IsExpired { get; set; }
+        
 
         public int Id { get; set; }
 
         public string Description { get; set; }
         public string Name { get; set; }
         public string Place { get; set; }
+
+
+        // If IsExpired property is true, set Color property to this color, if false, set to another color. -> Color is binded to in the view
+        public string Color { get; set; }
+
+        private bool _isExpired;
+        public bool IsExpired
+        {
+            get { return _isExpired; }
+            set
+            {
+                _isExpired = value;
+                if (_isExpired)
+                {
+                    Color = "#e74c3c";
+                }
+                else if (_isExpired == false)
+                {
+                    Color = "#27ae60";
+                }
+                
+            }
+
+        }
 
         // Constructor
         public Event(DateTime dateTime, string description, string name, string place)
