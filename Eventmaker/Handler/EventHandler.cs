@@ -29,7 +29,7 @@ namespace Eventmaker.Handler
             // denne sindssyge oprettelse af et event, benytter sig af alle de properties fra ViewModellen 
             // + den konverterede DateTime fra DateTimeConverteren
 
-            if (EventViewModel.Description !=null && EventViewModel.Name != null && EventViewModel.Place != null)
+            if (EventViewModel.Description != null && EventViewModel.Name != null && EventViewModel.Place != null)
             {
                 Event newEvent = new Event(
                             Converter.DateTimeConverter.DateTimeOffsetAndTimeSetToDateTime(EventViewModel.Date,EventViewModel.Time), 

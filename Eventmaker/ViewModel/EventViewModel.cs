@@ -35,6 +35,9 @@ namespace Eventmaker.ViewModel
             }
         }
 
+
+
+        // Using savecommand this to save the main list when you're done editing an event.
         private ICommand _saveEventCommand;
 
         public ICommand SaveEventCommand

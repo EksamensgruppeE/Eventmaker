@@ -52,6 +52,7 @@ namespace Eventmaker.View
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(CreateEventPage));
+
             //popup.IsOpen = !popup.IsOpen;
         }
 
@@ -66,5 +67,7 @@ namespace Eventmaker.View
                 EditEvent.Visibility = Visibility.Collapsed;
             }
         }
+
+     
     }
 }
