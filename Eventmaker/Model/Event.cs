@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Eventmaker.Model
 {
@@ -12,7 +14,7 @@ namespace Eventmaker.Model
 
         // Properties
         public DateTime DateTime { get; set; }
-        
+        public string DateTimeFormat { get; set; }
 
         public int Id { get; set; }
 
@@ -54,6 +56,7 @@ namespace Eventmaker.Model
             Place = place;
             numberOfEvents++;
 
+            DateTimeFormat = DateTime.ToString("dd MMMM | yyyy");
         }
 
         public override string ToString()
@@ -62,9 +65,9 @@ namespace Eventmaker.Model
         }
 
 
+
         
 
-      
 
     }
 }

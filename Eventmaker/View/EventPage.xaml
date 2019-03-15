@@ -41,15 +41,18 @@
             FontWeight="Bold"
             Text="Events" />
 
-        <Button
+        <!--  Not Important  -->
+        <!--<Button
             Grid.Row="0"
             Grid.Column="2"
             Background="Aquamarine">
-            <!--  ViewBox scales its content to the size of itself  -->
+        -->
+        <!--  ViewBox scales its content to the size of itself  -->
+        <!--
             <Viewbox Width="50" Height="50">
                 <SymbolIcon Symbol="FontSize" />
             </Viewbox>
-        </Button>
+        </Button>-->
 
 
         <StackPanel
@@ -112,7 +115,8 @@
                                         HorizontalAlignment="Center"
                                         FontSize="20"
                                         Text="{Binding Name}" />
-                                    <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding DateTimeFormat}" />
+                                    <!--<StackPanel Orientation="Horizontal">
                                         <TextBlock FontSize="12" Text="{Binding DateTime.DayOfWeek}" />
 
 
@@ -137,7 +141,7 @@
                                             Padding="5,0,0,0"
                                             FontSize="12"
                                             Text="{Binding DateTime.Year}" />
-                                    </StackPanel>
+                                    </StackPanel>-->
 
 
 
