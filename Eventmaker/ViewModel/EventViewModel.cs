@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Xaml.Media;
+using Eventmaker.Annotations;
 using Eventmaker.Common;
 using Eventmaker.Handler;
 using Eventmaker.Model;
 
 namespace Eventmaker.ViewModel
 {
-    class EventViewModel
+    class EventViewModel : INotifyPropertyChanged
     {
         private ICommand _selectedEventCommand;
         private ICommand _deleteEventCommand;
@@ -18,8 +23,25 @@ namespace Eventmaker.ViewModel
 
         public EventCatalogSingleton EventCatalogSingleton { get; set; }
 
-        //her gemmes det Event vi har valgt i ListViewet
-        public static Event SelectedEvent { get; set; }
+        //her gemmes det Event vi har valgt i ListViewet - Rember OnPropertyChanged if you want to use a selected event to show more data
+        private Event _selectedEvent;
+        public Event SelectedEvent
+        {
+            get { return _selectedEvent;}
+            set
+            {
+                _selectedEvent = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ICommand _saveEventCommand;
+
+        public ICommand SaveEventCommand
+        {
+            get { return _saveEventCommand ?? (_saveEventCommand = new RelayCommand(EventHandler.SaveEvents)); }
+            set { _saveEventCommand = value; }
+        }
 
         public ICommand SelectedEventCommand
         {
@@ -44,6 +66,39 @@ namespace Eventmaker.ViewModel
 
         }
 
+        private string _filterText;
+        public string FilterText
+        {
+            get { return _filterText;}
+            set
+            {
+                if (_filterText != null)
+                {
+                    _filterText = value;
+                    OnPropertyChanged();
+                }
+                
+                
+                FilterEvents();
+            }
+        }
+
+        private ObservableCollection<Event> _filteredList;
+
+        public ObservableCollection<Event> FilteredList
+        {
+            get { return _filteredList;}
+            set
+            {
+                _filteredList = value;
+                OnPropertyChanged();
+            }
+        }
+
+        
+
+
+
         public Handler.EventHandler EventHandler { get; set; }
 
         public int Id { get; set; }
@@ -55,6 +110,7 @@ namespace Eventmaker.ViewModel
 
         public TimeSpan Time { get; set; }
 
+        
 
         public EventViewModel()
         {
@@ -71,10 +127,28 @@ namespace Eventmaker.ViewModel
             CreateEventCommand = new RelayCommand(EventHandler.CreateEvent);
             
             CheckExpireCommand = new RelayCommand(EventHandler.ExpireCheck);
-            
+
+            FilteredList = EventCatalogSingleton.Events;
+
         }
 
-        
+        public void FilterEvents()
+        {
+            if (_filterText == null) _filterText = "";
+            FilteredList = new ObservableCollection<Event>(EventCatalogSingleton.Instance.Events
+                .Where(e => e.Name.ToLower().Contains(FilterText.ToLower())));
+        }
+
+
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        } 
+        #endregion
     }
 
     

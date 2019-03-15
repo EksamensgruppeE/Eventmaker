@@ -41,14 +41,15 @@ namespace Eventmaker.Model
         public void AddEvent(Event newEvent)
         {
             Events.Add(newEvent);
-           
+           PersistencyService.SaveEventsAsJsonAsync(Events);
 
         }
 
         //denne metode tager det event vi har gemt i SelectedEvent og fjerner det fra listen. 
-        public void RemoveEvent()
+        public void RemoveEvent(Event removeEvent)
         {
-            Events.Remove(EventViewModel.SelectedEvent);
+            Events.Remove(removeEvent);
+            PersistencyService.SaveEventsAsJsonAsync(Events);
         }
 
         public async void LoadEventsAsync()

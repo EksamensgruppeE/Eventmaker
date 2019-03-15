@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
@@ -21,6 +22,8 @@ namespace Eventmaker.Handler
             EventViewModel = eventViewModel;
         }
 
+
+
         public void CreateEvent()
         {
             // denne sindssyge oprettelse af et event, benytter sig af alle de properties fra ViewModellen 
@@ -29,12 +32,14 @@ namespace Eventmaker.Handler
             if (EventViewModel.Description !=null && EventViewModel.Name != null && EventViewModel.Place != null)
             {
                 Event newEvent = new Event(
-                    Converter.DateTimeConverter.DateTimeOffsetAndTimeSetToDateTime(EventViewModel.Date,
-                        EventViewModel.Time), EventViewModel.Description, EventViewModel.Name, EventViewModel.Place);
+                            Converter.DateTimeConverter.DateTimeOffsetAndTimeSetToDateTime(EventViewModel.Date,EventViewModel.Time), 
+                            EventViewModel.Description, 
+                            EventViewModel.Name, 
+                            EventViewModel.Place);
 
 
-                Model.EventCatalogSingleton.Instance.AddEvent(newEvent);
-                PersistencyService.SaveEventsAsJsonAsync(EventCatalogSingleton.Instance.Events);
+                EventViewModel.EventCatalogSingleton.AddEvent(newEvent);
+                
             }
 
             if (EventViewModel.Name == null)
@@ -52,7 +57,8 @@ namespace Eventmaker.Handler
         public void DeleteEvent()
         {
             //denne metode kalder den metode der fjerner det event vi har selected i listview.
-            EventCatalogSingleton.Instance.RemoveEvent();
+            
+            EventViewModel.EventCatalogSingleton.RemoveEvent(EventViewModel.SelectedEvent);
         }
 
         //denne metode tager det event den har fået fra EventViewModel.SelectedEventCommand
@@ -61,6 +67,12 @@ namespace Eventmaker.Handler
         {
             EventViewModel.SelectedEvent = selectedEvent;
         }
+
+        public void SaveEvents()
+        {
+            PersistencyService.SaveEventsAsJsonAsync(EventViewModel.EventCatalogSingleton.Events);
+        }
+
 
         public  void ExpireCheck()
         {
