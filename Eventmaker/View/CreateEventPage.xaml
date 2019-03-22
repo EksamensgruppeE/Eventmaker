@@ -19,7 +19,6 @@
                 Icon="Back"
                 Label="To Event List" />
 
-
             <AppBarButton
                 Command="{Binding CreateEventCommand}"
                 Icon="Add"
@@ -148,6 +147,7 @@
 
 
             </StackPanel>
+
 
         </Grid>
 
