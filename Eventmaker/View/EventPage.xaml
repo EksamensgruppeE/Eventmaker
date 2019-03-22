@@ -22,7 +22,7 @@
             <ColumnDefinition Width="50" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="250" />
             <ColumnDefinition Width="50" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -40,19 +40,6 @@
             FontSize="40"
             FontWeight="Bold"
             Text="Events" />
-
-        <!--  Not Important  -->
-        <!--<Button
-            Grid.Row="0"
-            Grid.Column="2"
-            Background="Aquamarine">
-        -->
-        <!--  ViewBox scales its content to the size of itself  -->
-        <!--
-            <Viewbox Width="50" Height="50">
-                <SymbolIcon Symbol="FontSize" />
-            </Viewbox>
-        </Button>-->
 
 
 
@@ -116,8 +103,7 @@
                                         HorizontalAlignment="Center"
                                         FontSize="20"
                                         Text="{Binding Name}" />
-                                    <TextBlock Text="{Binding DateTimeFormat}" />
-                                    <!--<StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Horizontal">
                                         <TextBlock FontSize="12" Text="{Binding DateTime.DayOfWeek}" />
 
 
@@ -142,7 +128,7 @@
                                             Padding="5,0,0,0"
                                             FontSize="12"
                                             Text="{Binding DateTime.Year}" />
-                                    </StackPanel>-->
+                                    </StackPanel>
 
 
 
@@ -204,11 +190,10 @@
                 Background="#27ae60"
                 Click="ButtonBase_OnClick">
                 <StackPanel Orientation="Horizontal">
-
                     <fa:FontAwesome
                         FontSize="27"
                         Foreground="White"
-                        Icon="PlusSquare" />
+                        Icon="PlusCircle" />
                     <TextBlock
                         Padding="5,0,0,0"
                         FontSize="20"
@@ -320,7 +305,7 @@
                     Width="240"
                     Background="#27ae60"
                     Click="OnClick_EditEvent"
-                    Command="{Binding UpdateEventCommand}">
+                    Command="{Binding SaveEventCommand}">
                     <StackPanel Orientation="Horizontal">
                         <fa:FontAwesome
                             FontSize="27"

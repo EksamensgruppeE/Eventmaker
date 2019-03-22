@@ -35,16 +35,13 @@ namespace Eventmaker.ViewModel
             }
         }
 
+        private ICommand _saveEventCommand;
 
-
-        // Save event is not needed anymore with db access
-        // Using savecommand this to save the main list when you're done editing an event.
-        //private ICommand _saveEventCommand;
-        //public ICommand SaveEventCommand
-        //{
-        //    get { return _saveEventCommand ?? (_saveEventCommand = new RelayCommand(EventHandler.SaveEvents)); }
-        //    set { _saveEventCommand = value; }
-        //}
+        public ICommand SaveEventCommand
+        {
+            get { return _saveEventCommand ?? (_saveEventCommand = new RelayCommand(EventHandler.SaveEvents)); }
+            set { _saveEventCommand = value; }
+        }
 
         public ICommand SelectedEventCommand
         {
@@ -57,17 +54,6 @@ namespace Eventmaker.ViewModel
         }
 
         public ICommand CheckExpireCommand { get; set; }
-
-        // Update already created event .... 
-        private ICommand _updateEventCommand;
-        public ICommand UpdateEventCommand
-        {
-            get
-            {
-                return _updateEventCommand ?? (_updateEventCommand = new RelayCommand(EventHandler.UpdateEvent));
-            }
-            set { _updateEventCommand = value; }
-        }
         
         public ICommand CreateEventCommand { get; set; }
 
@@ -109,10 +95,9 @@ namespace Eventmaker.ViewModel
             }
         }
 
+        
 
 
-
-        public bool isExpired { get; set; }
 
         public Handler.EventHandler EventHandler { get; set; }
 
