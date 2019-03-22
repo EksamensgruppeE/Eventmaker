@@ -55,6 +55,7 @@
         </Button>-->
 
 
+
         <StackPanel
             Grid.Row="1"
             Grid.Column="1"
@@ -319,7 +320,7 @@
                     Width="240"
                     Background="#27ae60"
                     Click="OnClick_EditEvent"
-                    Command="{Binding SaveEventCommand}">
+                    Command="{Binding UpdateEventCommand}">
                     <StackPanel Orientation="Horizontal">
                         <fa:FontAwesome
                             FontSize="27"

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Threading;
 
 namespace Eventmaker.Model
 {
@@ -14,6 +16,7 @@ namespace Eventmaker.Model
 
         // Properties
         public DateTime DateTime { get; set; }
+
         public string DateTimeFormat { get; set; }
 
         public int Id { get; set; }
@@ -46,9 +49,14 @@ namespace Eventmaker.Model
 
         }
 
+        // Cultureinfo ...........
+        //CultureInfo culture = CultureInfo.CurrentUICulture;
+        //CultureInfo culture = new CultureInfo("da-DK");
+        //CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;
         // Constructor
         public Event(DateTime dateTime, string description, string name, string place)
         {
+ 
             DateTime = dateTime;
             Description = description;
             Id = 1 + numberOfEvents;
@@ -56,7 +64,18 @@ namespace Eventmaker.Model
             Place = place;
             numberOfEvents++;
 
-            DateTimeFormat = DateTime.ToString("dd MMMM | yyyy");
+            //DateTimeFormat = DateTime.ToString("dd MMMM | yyyy");
+            DateTimeFormat = DateTime.ToString("dd MMMM | yyyy", new CultureInfo("da-DK"));
+            // TODO Culture info ..
+            //DateTimeFormat = DateTime.ToString("D");
+            //DateTime = DateTime.Parse(DateTimeFormat, CultureInfo.CurrentCulture);
+            //DateTime.ParseExact() <- Takes it from string to datetime
+
+            if (DateTime < DateTime.Now)
+                IsExpired = true;
+            else
+                IsExpired = false;
+
         }
 
         public override string ToString()

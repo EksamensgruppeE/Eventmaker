@@ -17,7 +17,6 @@ namespace Eventmaker.Model
         public static EventCatalogSingleton Instance
         {
             get { return _instance ?? (_instance = new EventCatalogSingleton()); }
-
         }
 
         public ObservableCollection<Event> Events { get; set; }
@@ -41,16 +40,29 @@ namespace Eventmaker.Model
         public void AddEvent(Event newEvent)
         {
             Events.Add(newEvent);
-           PersistencyService.SaveEventsAsJsonAsync(Events);
+           PersistencyService.SaveEventsAsJsonAsync(newEvent);
+        }
 
+        public void AddEvent(string name, string place, DateTime dateTime, string description)
+        {
+            Event eve = new Event(dateTime,description,name,place);
+            Events.Add(eve);
+            PersistencyService.SaveEventsAsJsonAsync(eve);
         }
 
         //denne metode tager det event vi har gemt i SelectedEvent og fjerner det fra listen. 
         public void RemoveEvent(Event removeEvent)
         {
             Events.Remove(removeEvent);
-            PersistencyService.SaveEventsAsJsonAsync(Events);
+            PersistencyService.DeleteEventsAsync(removeEvent);
         }
+
+        public void UpdateEvent(Event updateEvent)
+        {
+            
+            PersistencyService.UpdateEventAsync(updateEvent);
+            // update via Persistency
+        } 
 
         public async void LoadEventsAsync()
         {
